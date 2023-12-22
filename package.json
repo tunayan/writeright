@@ -1,0 +1,59 @@
+{
+  "name": "proofreadergpt",
+  "displayName": "ProofreaderGPT",
+  "description": "It reads the input of the user and reviews, corrects the input based on grammar and spelling",
+  "version": "0.0.1",
+  "publisher": "rootfish",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:rootfish.proofreadergpt.askQuestion"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "ProofreaderGPT Settings",
+      "properties": {
+        "rootfish.proofreadergpt.openAIKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API Key for using ProofreaderGPT"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "rootfish.proofreadergpt.askQuestion",
+        "title": "Ask a question"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "openai": "^4.24.1"
+  }
+}
